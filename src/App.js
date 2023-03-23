@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import NavBar from './components/NavBar';
+import Table from './components/Table';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AddNewExp from './components/AddNewExp';
+import Editar from './components/Editar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+          <>
+          <BrowserRouter>
+              <NavBar />
+            <Routes>
+              <Route path='/expedientes' element={<Table />}/>
+              <Route path='/añadir_nuevo' element={<AddNewExp />}/>
+              <Route path='/expedientes/editar/:id' element={<Editar />}/>
+            </Routes>
+          </BrowserRouter>
+          </>
+          );
+};
 export default App;
+
+
+
